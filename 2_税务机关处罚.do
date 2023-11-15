@@ -1,6 +1,7 @@
 destring amount_in_num, replace
 
-bysort province1 province2 province3 year: egen country_level_penalty = sum(amount_in_num)
+** 计算区县层面的 行政处罚金额
+bysort province1 province2 province3 year: egen country_level_penalty = sum(amount_in_num) //相对值 人数、GDP、次数、行业内计算次数
 order country_level_penalty year province1 province2 province3
 sort country_level_penalty
  
