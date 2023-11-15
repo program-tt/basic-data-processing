@@ -5,10 +5,10 @@ bysort province1 province2 province3 year: egen country_level_penalty = sum(amou
 order country_level_penalty year province1 province2 province3
 sort country_level_penalty
  
-bysort province1 province2 province3 year: egen mean_penalty = mean(amount_in_num)
-order mean_penalty
+bysort province1 province2 province3 year: egen mean_penalty = mean(amount_in_num) //
+order mean_penalty 
 
-bysort province1 province2 province3 year: egen sd_penalty = sd(amount_in_num)
+bysort province1 province2 province3 year: egen sd_penalty = sd(amount_in_num) // 全国层面 
 order sd_penalty
 recode sd_penalty (.=0)
 
