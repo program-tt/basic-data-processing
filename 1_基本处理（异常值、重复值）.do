@@ -5,15 +5,10 @@
 ** 修改一稿时间：2023.11.16
 
 *----------------文件基本设置--------------------------------------
- global root "/Users/apple/Desktop/税收处罚与企业流动/raw data"
-
-local Y   
-local X1
-local X2 
-local X3  
+ global root "/Users/apple/Desktop/税收处罚与企业流动"
 
 *--------------  原始数据清理   ---------------------------------------
-use "$root/税务机构处罚.dta",clear  
+use "$root/raw data/税务机构处罚.dta",clear  
 //数据读取
 
 split zhifadiyu, parse(",") gen(province) 
