@@ -10,14 +10,14 @@
    2.
 
 *--------------- 文件基本设置 ------------------------------------------
- global root "/Users/apple/Desktop/税收处罚与企业流动"
+ global root "/Users/apple/Desktop/税收处罚与企业流动/temp"
 
 local Y   
 local X1
 local X2 
 local X3  
 *--------------  基本处理   ---------------------------------------
-use "$root/税务机构处罚.dta",clear  
+use "$root/1_税务机构处罚_sum.dta",clear  
 //数据读取
 
 use "$root/企业地址流动.dta"
