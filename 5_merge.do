@@ -6,16 +6,13 @@
 ** 修改一稿时间：2023.11.17
 
 ** 存在问题：
-   1.
-   2.
+   1.由于是与“新注册企业数据”合并，所以对于“企业地址流动”中merge的依据变量选择了newdistrict，
+     那这里如果选择依据其中的olddistrict变量进行合并的话是否也有意义呢
+   2.合并后的数据除了对_merge变量（合并的情况）进行检查外还应当如何进行检查呢
 
 *--------------- 文件基本设置 ------------------------------------------
  global root "/Users/apple/Desktop/税收处罚与企业流动/temp"
 
-local Y   
-local X1
-local X2 
-local X3  
 *--------------  变量名称修改   ---------------------------------------
 use "$root/1_税务机构处罚_sum.dta",clear  
    rename city city_1
@@ -33,7 +30,7 @@ use "$root/1_新注册企业_sum.dta"
 
 *--------------  数据集合并   ---------------------------------------
 use "$root/2_税务机构处罚.dta",clear
-merge 1:m city_1 district_1 year using "$root/2_企业地址流动.dta" 
+merge 1:1 district_1 year using "$root/2_新注册企业.dta" 
 tab _merge
 count if _merge!=2
 drop _merge
@@ -41,8 +38,15 @@ save "$root/1_merge.dta",replace
 //进行前两组数据的合并，并检查成功合并的数据数量
 
 use "$root/1_merge.dta",clear  
-merge m:1 district_1 year using "$root/2_新注册企业.dta" 
+merge 1:m city_1 district_1 year using "$root/2_企业地址流动.dta" 
+tab _merge
+count if _merge!=3
+drop _merge
+save "$root/2_merge.dta",replace
+//进行三组数据的合并，并检查成功合并的数据数量
 
-save "/Users/apple/Desktop/税收处罚与企业流动/temp/merge.dta"
+sum
+
+
 
 
