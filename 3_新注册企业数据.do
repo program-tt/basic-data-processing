@@ -40,10 +40,14 @@ bysort 行业代码 年份:egen industry_total_number=sum(当年企业注册数�
 
 *---------------- 数据检查 ——-----------------------------------------
 sum max_number,d
+histogram max_number
+graph box max_number
  count if max_number>=10000  //40,600
  count if max_number>=100000 //500
 sum industry_total_number,d
-//进行描述性统计并检查是否有不合要求的数据
+histogram industry_total_number
+graph box industry_total_number
+//进行描述性统计并画图检查是否有不合要求的数据
 
 ----------------输出一个统计性表格 excel-------------------------
 eststo mydata
