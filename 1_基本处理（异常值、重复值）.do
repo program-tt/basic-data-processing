@@ -56,7 +56,7 @@ replace city = "武汉市" in 111/116
 replace city = "上海市" in 117/1938
 //部分数据存在问题，进行手动查询与调整
 
-count if city== "None" & district == "None"     // 808
+drop if city== "None" & district == "None"     // 808
 count if city!= "None" & district == "None"     //7,812
 
 ----------------输出一个统计性表格 excel-------------------------
