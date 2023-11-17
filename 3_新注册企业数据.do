@@ -19,7 +19,7 @@ local X1
 local X2 
 local X3  
 *--------------  基本处理   ---------------------------------------
-use "$root/税务机构处罚.dta",clear  
+use "$root/新注册企业数据.dta",clear  
 //数据读取
 
 drop 数据整理 原始来源
