@@ -8,8 +8,8 @@
 ** 存在问题：
    1.在构建country_level_penalty时进行统一化的过程中如何获取GDP，人数数据呢，是需要自己进行爬取吗
    2.41行duplicates drop后每一区县年份是随意留下一组，那么对应的devia_penalty也是随机留下一组，这个变量是否意义就不大了呢
-*--------------------------------------------------------------------
-** 文件基本设置
+
+*--------------- 文件基本设置 ------------------------------------------
  global root "/Users/apple/Desktop/税收处罚与企业流动"
 
 local Y   
@@ -46,4 +46,9 @@ histogram mean_penalty
 histogram sd_penalty
 count if sd_penalty==0     //  3,844
 
-save "/Users/apple/Desktop/税收处罚与企业流动/temp/2_税务机关处罚"
+----------------输出一个统计性表格 excel-------------------------
+eststo mydata
+
+save"$root/temp/1_税务机构处罚_sum.dta"
+
+** 税务机关处罚数据处理完毕
