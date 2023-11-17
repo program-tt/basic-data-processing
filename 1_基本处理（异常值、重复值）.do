@@ -56,8 +56,8 @@ replace city = "武汉市" in 111/116
 replace city = "上海市" in 117/1938
 //部分数据存在问题，进行手动查询与调整
 
-drop if city== "None" & district == "None"     // 808
-//由于上一部分已经手动输入所有直辖市的city值，因此这里相当于drop掉province,city,district均为None的数据
+count if city== "None" & district == "None"     // 808
+//计算精确度仅到省的数据的数量
 count if city!= "None" & district == "None"     //7,812
 //计算精确度仅到市的数据的数量
 
