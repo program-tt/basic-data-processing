@@ -41,11 +41,15 @@ bysort province city district year: gen devia_penalty = amount_in_num - mean_pen
 duplicates drop province city district year, force
 //将数据处理为区县，年份一一对应，为后续merge作准备：35,727 observations deleted
 
+*——————————————————— 数据检查 ——————————————————————————————————————————
 sum mean_penalty ,d
 histogram mean_penalty
+graph box mean_penalty
 sum sd_penalty ,d
 histogram sd_penalty
-count if sd_penalty==0     //  3,844
+graph box sd_penalty 
+ count if sd_penalty==0     //  3,844
+//进行描述性统计并画图检查是否有不合要求的数据
 
 ----------------输出一个统计性表格 excel-------------------------
 eststo mydata
