@@ -18,7 +18,7 @@ local X1
 local X2 
 local X3  
 *--------------  基本处理   ---------------------------------------
-use "$root/企业地址流动.dta",clear  
+use "$root/raw data/企业地址流动.dta",clear  
 //数据读取
 
 replace oldprovince = "陕西省" in 7
@@ -69,6 +69,7 @@ tab newprovince oldprovince
 //观察省级企业流向
 
 duplicates drop newprovince newcity newdistrict oldprovince oldcity olddistrict year,force 
+//将数据整理为区县级数据，便于后续合并
 
 ----------------输出一个统计性表格 excel-------------------------
 eststo mydata
