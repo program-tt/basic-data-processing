@@ -1,17 +1,17 @@
 * -------------------------------------------------------------------
-** 对原始数据的清理 税务机构税收相关处罚
-** 数据来源：    数据位置：
+** 税务机构税收相关处罚数据清理
 ** 唐棠
 ** 时间：2023.11.14
 ** 修改一稿时间：2023.11.16
-*--------------------------------------------------------------------
-** 文件基本设置
+
+*----------------文件基本设置--------------------------------------
  global root "/Users/apple/Desktop/税收处罚与企业流动"
 
 local Y   
 local X1
 local X2 
 local X3  
+
 *--------------  原始数据清理   ---------------------------------------
 use "$root/税务机构处罚.dta",clear  
 //数据读取
@@ -24,12 +24,10 @@ split zhifadiyu, parse(",") gen(province)
   drop zhifadiyu
 //将省市区变量进行分割并重新命名，便于后续merge
 
-
 duplicates drop xzid year, force 
 // 无数据被删除
     drop if province == "None" & city == "None" & district == "None"
 //89 observations deleted
-
 
 replace province = "广东省" in 1
 replace city = "广州市" in 1
@@ -65,7 +63,6 @@ replace city = "上海市" in 117/1938
 
 count if city== "None" & district == "None"     // 808
 count if city!= "None" & district == "None"     //7,812
-
 
 ----------------输出一个统计性表格 excel-------------------------
 ssc install estout
