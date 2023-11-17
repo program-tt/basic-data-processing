@@ -18,7 +18,7 @@ local X1
 local X2 
 local X3  
 *--------------  基本处理   ---------------------------------------
-use "$root/税务机构处罚.dta",clear  
+use "$root/企业地址流动.dta",clear  
 //数据读取
 
 replace oldprovince = "陕西省" in 7
