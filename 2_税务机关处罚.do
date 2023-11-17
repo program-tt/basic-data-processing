@@ -13,7 +13,7 @@
  global root "/Users/apple/Desktop/税收处罚与企业流动"
  
 *--------------  变量构建   ---------------------------------------
-use "$root//raw data/税务机构处罚.dta",clear  
+use "$root/raw data/税务机构处罚.dta",clear  
 //数据读取
 
 destring amount_in_num, replace
