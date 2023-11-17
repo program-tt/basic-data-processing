@@ -73,6 +73,6 @@ duplicates drop newprovince newcity newdistrict oldprovince oldcity olddistrict 
 ----------------输出一个统计性表格 excel-------------------------
 eststo mydata
 
-save"$root/temp/1_税务机构处罚_sum.dta"
+save"$root/temp/1_企业地址流动_sum.dta"
 
 ** 企业地址流动数据处理完毕，未涉及新变量构建
