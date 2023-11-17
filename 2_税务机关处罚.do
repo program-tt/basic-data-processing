@@ -10,7 +10,7 @@
    2.41行duplicates drop后每一区县年份是随意留下一组，那么对应的devia_penalty也是随机留下一组，这个变量是否意义就不大了呢
 
 *--------------- 文件基本设置 ------------------------------------------
- global root "/Users/apple/Desktop/税收处罚与企业流动"
+ global root "/Users/apple/Desktop/税收处罚与企业流动/raw data"
 
 local Y   
 local X1
