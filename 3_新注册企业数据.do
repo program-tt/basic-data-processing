@@ -52,7 +52,7 @@ graph box industry_total_number
 ----------------输出一个统计性表格 excel-------------------------
 eststo mydata
 
-save"$root/temp/1_税务机构处罚_sum.dta"
+save"$root/temp/1_新注册企业数据_sum.dta"
 
 ** 新注册企业数据处理完毕
 
