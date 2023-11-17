@@ -5,7 +5,7 @@
 ** 修改一稿时间：2023.11.16
 
 *----------------文件基本设置--------------------------------------
- global root "/Users/apple/Desktop/税收处罚与企业流动"
+ global root "/Users/apple/Desktop/税收处罚与企业流动/raw data"
 
 local Y   
 local X1
