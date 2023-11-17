@@ -69,3 +69,10 @@ tab newprovince oldprovince
 //观察省级企业流向
 
 duplicates drop newprovince newcity newdistrict oldprovince oldcity olddistrict year,force 
+
+----------------输出一个统计性表格 excel-------------------------
+eststo mydata
+
+save"$root/temp/1_税务机构处罚_sum.dta"
+
+** 企业地址流动数据处理完毕，未涉及新变量构建
