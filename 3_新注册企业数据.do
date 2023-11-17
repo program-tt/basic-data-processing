@@ -45,6 +45,13 @@ sum max_number,d
 sum industry_total_number,d
 //进行描述性统计并检查是否有不合要求的数据
 
+----------------输出一个统计性表格 excel-------------------------
+eststo mydata
+
+save"$root/temp/1_税务机构处罚_sum.dta"
+
+** 新注册企业数据处理完毕
+
 
 
 
