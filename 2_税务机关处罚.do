@@ -1,6 +1,5 @@
 * -------------------------------------------------------------------
 ** 税务机构税收相关处罚变量构建
-** 数据来源：    数据位置：
 ** 唐棠
 ** 时间：2023.11.14
 ** 修改一稿时间：2023.11.17
@@ -41,13 +40,14 @@ duplicates drop province city district year, force
 sum mean_penalty ,d
 histogram mean_penalty
 graph box mean_penalty
+
 sum sd_penalty ,d
 histogram sd_penalty
 graph box sd_penalty 
  count if sd_penalty==0     //  3,844
-//进行描述性统计并画图检查是否有不合要求的数据
+//对两个变量进行描述性统计并画图检查是否有不合要求的数据
 
-----------------输出一个统计性表格 excel-------------------------
+*----------------输出一个统计性表格 excel-------------------------
 eststo mydata
 
 save"$root/temp/1_税务机构处罚_sum.dta"
