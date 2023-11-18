@@ -22,6 +22,8 @@ replace olddistrict = "榆阳区" in 7
 replace oldprovince = "陕西省" in 5
 replace oldcity = "榆林市" in 5
 replace olddistrict = "榆阳区" in 5
+replace old_address = "陕西省榆阳区南郊市交通局家属院" in 4
+replace old_address = "陕西省榆林市榆阳区马合镇东马合村" in 5
 
 replace newprovince = "陕西省" in 7
 replace newcity = "榆林市" in 7
@@ -35,8 +37,6 @@ replace newdistrict = "榆阳区" in 5
 replace newprovince = "陕西省" in 4
 replace newcity = "榆林市" in 4
 replace newdistrict = "榆阳区" in 4
-replace old_address = "陕西省榆阳区南郊市交通局家属院" in 4
-replace old_address = "陕西省榆林市榆阳区马合镇东马合村" in 5
 replace newprovince = "广州市" in 3
 replace newprovince = "广东省" in 3
 replace newcity = "广州市" in 3
@@ -67,7 +67,7 @@ duplicates drop newprovince newcity newdistrict oldprovince oldcity olddistrict 
 //将数据整理为区县级数据，便于后续合并
 
 ----------------输出一个统计性表格 excel-------------------------
-eststo mydata
+esttab mydata
 
 save"$root/temp/1_企业地址流动_sum.dta"
 
