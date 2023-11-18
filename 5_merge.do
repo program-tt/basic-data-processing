@@ -47,7 +47,7 @@ sum
 //对合并后数据进行描述性统计检查
 
 ----------------输出一个统计性表格 excel-------------------------
-eststo mydata
+esttab mydata
 
 save "$root/2_merge.dta",replace
 
