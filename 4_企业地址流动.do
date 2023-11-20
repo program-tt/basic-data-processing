@@ -3,11 +3,10 @@
 ** 唐棠
 ** 时间：2023.11.14
 ** 修改一稿时间：2023.11.17
+** 修改二稿时间：2023.11.20
 
-** 一稿存在问题：
+** 二稿修改部分：
    1.这里大部分的old_address变量与后面的oldprovince，oldcity，olddistrict变量不符合
-   2.对于区县内流动企业与地址未改变的企业无法区分：一方面因为old_address变量不准确，另一方面这两种情况下
-     oldprovince，oldcity，olddistrict与newprovince，newcity，newdistrict完全相同
 
 *--------------- 文件基本设置 ------------------------------------------
  global root "/Users/apple/Desktop/税收处罚与企业流动"
