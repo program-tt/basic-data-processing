@@ -7,7 +7,7 @@
  global root "/Users/apple/Desktop/税收处罚与企业流动"
 
 *--------------  原始数据清理   ---------------------------------------
-import excel "/Users/apple/Desktop/【更新21数据】县域统计年鉴面板（2001-2022版）.xls",firstrow  clear
+import excel "$root/【更新21数据】县域统计年鉴面板（2001-2022版）.xls",firstrow  clear
 //数据导入
 
  drop 乡及镇个数个 乡个数个 镇个数个 街道办事处个数个 村民委员会个数个 城镇单位在岗职工人数人 
