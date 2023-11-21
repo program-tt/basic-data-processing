@@ -38,6 +38,15 @@ bysort province city district year: gen devia_penalty = amount_in_num - mean_pen
 duplicates drop province city district year, force
 //将数据处理为区县，年份一一对应，为后续merge作准备：35,727 observations deleted
 
+order province city district year
+sort province city district year
+
+replace province = "北京市" in 1/2
+replace city = " 北京市" in 778/833
+replace city = " 天津市" in 1345/1425
+replace city = "北屯市" in 3311/3313
+
+
 *——————————————————— 数据检查 ——————————————————————————————————————————
 sum mean_penalty ,d
 histogram mean_penalty
