@@ -68,6 +68,8 @@ replace city_1 = "新疆维吾尔自治区" in 441/462
 replace city_1 = "海南省" in 463/484
 //部分数据存在对应不准确问题，进行手动调整
 
+duplicates report province city_1 district_1 year //0
+
 count if GDP==. //6,835
 count if 年末总人口万人==. //8,145
 count if 户籍人口数万人==. //2,651
