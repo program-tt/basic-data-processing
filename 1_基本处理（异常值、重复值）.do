@@ -60,6 +60,27 @@ replace city = "茫崖市" in 110
 replace province = "湖北省" in 111/116
 replace city = "武汉市" in 111/116
 replace city = "上海市" in 117/1938
+
+replace city_1 = "重庆市" in 16/20
+replace city_1 = "万宁市" in 9/14
+replace district_1 = "上虞区" in 76/78
+replace city_1 = "海南省" in 138/142
+replace city_1 = "重庆市" in 235/236
+
+sort province city_1 district_1 year
+replace district_1 = "崇明区" in 26/28
+replace city_1 = "新疆维吾尔自治区" in 3315/3333
+replace district_1 = "清苑区" in 4254/4257
+replace district_1 = "满城区" in 4261/4263
+replace district_1 = "永年区" in 4673/4677
+replace district_1 = "肥乡区" in 4687/4690
+replace city_1 = "济源市" in 5082/5084
+replace city_1 = "海南省" in 5603/5669
+replace city_1 = "湖北省" in 5811/5814
+replace city_1 = "襄阳市" in 5848/5867
+replace city_1 = "重庆市" in 6934/7069
+
+
 //部分数据存在问题，进行手动查询与调整
 
 count if city== "None" & district == "None"     // 808
