@@ -89,8 +89,8 @@ count if city!= "None" & district == "None"     //7,812
 replace district_1 =strtrim(district_1) //5,511
 replace city_1 =strtrim(city_1) //5,439 
 
-duplicates report province city_1 district_1 year //383
-duplicates drop province city_1 district_1 year, force //383
+duplicates report province city_1 district_1 year //383+394
+duplicates drop province city_1 district_1 year, force //383+394
 
 
 tab district 
