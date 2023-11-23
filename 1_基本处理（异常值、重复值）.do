@@ -81,8 +81,6 @@ replace city_1 = "襄阳市" in 5848/5867
 replace city_1 = "重庆市" in 6934/7069
 //部分数据存在问题，进行手动查询与调整
 
-duplicates report province city_1 district_1 year //0
-
 count if city== "None" & district == "None"     // 808
 //计算精确度仅到省的数据的数量
 count if city!= "None" & district == "None"     //7,812
