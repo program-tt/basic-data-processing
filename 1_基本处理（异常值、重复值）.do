@@ -79,9 +79,25 @@ replace city_1 = "海南省" in 5603/5669
 replace city_1 = "湖北省" in 5811/5814
 replace city_1 = "襄阳市" in 5848/5867
 replace city_1 = "重庆市" in 6934/7069
-
-
+replace city_1 = "海南省" in 1/44
+replace city_1 = "新疆维吾尔自治区" in 45/66
+replace city_1 = "海南省" in 67/88
+replace city_1 = "新疆维吾尔自治区" in 89/110
+replace city_1 = "北京市" in 111/132
+replace city_1 = "海南省" in 133/154
+replace city_1 = "北京市" in 155/176
+replace city_1 = "海南省" in 177/198
+replace city_1 = "北京市" in 199/264
+replace city_1 = "海南省" in 265/308
+replace city_1 = "济源市" in 309/330
+replace city_1 = "海南省" in 331/396
+replace city_1 = "新疆维吾尔自治区" in 397/418
+replace city_1 = "湖北省" in 419/440
+replace city_1 = "新疆维吾尔自治区" in 441/462
+replace city_1 = "海南省" in 463/484
 //部分数据存在问题，进行手动查询与调整
+
+duplicates report province city_1 district_1 year //0
 
 count if city== "None" & district == "None"     // 808
 //计算精确度仅到省的数据的数量
