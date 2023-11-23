@@ -56,6 +56,14 @@ count if 年末总人口万人==. //8,145
 count if 户籍人口数万人==. //2,651
 //查看三个变量的缺失值数量
 
+ replace district_1 =strtrim(district_1)
+//0 
+replace city_1 =strtrim(city_1)
+//0
+replace province =strtrim(province)
+//0
+
+
 ----------------输出一个统计性表格 excel-------------------------
 sum GDP,d
 sum 年末总人口万人,d
