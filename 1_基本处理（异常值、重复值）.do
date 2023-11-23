@@ -7,6 +7,7 @@
 
 ** 二稿修改部分：
    1.输出excel统计性表格部分
+   2.去除字符串前后空格
    2.与gdp数据合并，并检查
 
 *----------------文件基本设置--------------------------------------
@@ -65,6 +66,10 @@ count if city== "None" & district == "None"     // 808
 //计算精确度仅到省的数据的数量
 count if city!= "None" & district == "None"     //7,812
 //计算精确度仅到市的数据的数量
+
+replace district_1 =strtrim(district_1) //5,511
+replace city_1 =strtrim(city_1) //5,439 
+
 
 tab district 
 
