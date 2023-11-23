@@ -49,6 +49,23 @@ replace city_1 = "琼海市" in 36478/36499
 replace city_1 = "五指山市" in 36302/36323
 replace city_1 = "东方市" in 36236/36257
 replace city_1 = "万宁市" in 36214/36235
+
+replace city_1 = "海南省" in 1/44
+replace city_1 = "新疆维吾尔自治区" in 45/66
+replace city_1 = "海南省" in 67/88
+replace city_1 = "新疆维吾尔自治区" in 89/110
+replace city_1 = "北京市" in 111/132
+replace city_1 = "海南省" in 133/154
+replace city_1 = "北京市" in 155/176
+replace city_1 = "海南省" in 177/198
+replace city_1 = "北京市" in 199/264
+replace city_1 = "海南省" in 265/308
+replace city_1 = "济源市" in 309/330
+replace city_1 = "海南省" in 331/396
+replace city_1 = "新疆维吾尔自治区" in 397/418
+replace city_1 = "湖北省" in 419/440
+replace city_1 = "新疆维吾尔自治区" in 441/462
+replace city_1 = "海南省" in 463/484
 //部分数据存在对应不准确问题，进行手动调整
 
 count if GDP==. //6,835
