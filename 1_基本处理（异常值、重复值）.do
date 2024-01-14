@@ -7,6 +7,7 @@
 
 ** 二稿修改部分：
    1.输出excel统计性表格部分
+   2.去除字符串前后空格
    2.与gdp数据合并，并检查
 
 *----------------文件基本设置--------------------------------------
@@ -59,12 +60,38 @@ replace city = "茫崖市" in 110
 replace province = "湖北省" in 111/116
 replace city = "武汉市" in 111/116
 replace city = "上海市" in 117/1938
+
+replace city_1 = "重庆市" in 16/20
+replace city_1 = "万宁市" in 9/14
+replace district_1 = "上虞区" in 76/78
+replace city_1 = "海南省" in 138/142
+replace city_1 = "重庆市" in 235/236
+
+sort province city_1 district_1 year
+replace district_1 = "崇明区" in 26/28
+replace city_1 = "新疆维吾尔自治区" in 3315/3333
+replace district_1 = "清苑区" in 4254/4257
+replace district_1 = "满城区" in 4261/4263
+replace district_1 = "永年区" in 4673/4677
+replace district_1 = "肥乡区" in 4687/4690
+replace city_1 = "济源市" in 5082/5084
+replace city_1 = "海南省" in 5603/5669
+replace city_1 = "湖北省" in 5811/5814
+replace city_1 = "襄阳市" in 5848/5867
+replace city_1 = "重庆市" in 6934/7069
 //部分数据存在问题，进行手动查询与调整
 
 count if city== "None" & district == "None"     // 808
 //计算精确度仅到省的数据的数量
 count if city!= "None" & district == "None"     //7,812
 //计算精确度仅到市的数据的数量
+
+replace district_1 =strtrim(district_1) //5,511
+replace city_1 =strtrim(city_1) //5,439 
+
+duplicates report province city_1 district_1 year //383+394
+duplicates drop province city_1 district_1 year, force //383+394
+
 
 tab district 
 
