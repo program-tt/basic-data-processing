@@ -56,6 +56,12 @@ outreg se
 destring id_str,replace
 xtset id_str year
 xtreg BTD TACC i.year, fe
+outreg se,m
+
+
+----------------输出一个统计性表格 excel-------------------------
+export
+save"$root/temp/上市公司数据-纳税遵从指标.dta"
 
 
 
