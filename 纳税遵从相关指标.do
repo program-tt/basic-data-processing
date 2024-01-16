@@ -30,12 +30,17 @@ sum ETR,d  //共60379，缺失17402
 
 ---------- 实际所得税率变体1:名义所得税率-实际所得税率(RATE＿diff)
 gen RATE＿diff = F032801B-ETR
+  //所得税率-ETR
 order RATE＿diff
 sum RATE＿diff,d
 
 ---------- 实际所得税率变体2:多期实际税率的平均值（例：“名义所得税率与实际税率之差”的五年平均值(第t-4年至第t年)(LRATE＿diff)）
-
-
+forval i = 0/4 {by id_str: gen  RATE＿diff_l`i' =  RATE＿diff[_n-`i']}
+  //生成差值变量
+egen LRATE_diff = rowmean(RATE＿diff_l0 RATE＿diff_l1 RATE＿diff_l2 RATE＿diff_l3 RATE＿diff_l4)
+  //计算五年滚动平均
+order LRATE_diff
+sum LRATE_diff,d
 
 
 ***************** 法2:账面-应税收入法及其变体 ****************************
@@ -49,13 +54,14 @@ lookfor "税前利润"
 gen BTD=(F050601B-应纳税所得额)/A100000_33  
   //(息税前利润（EBIT）-应纳税所得额)/ 总资产-[专题-资本结构]
 order BTD
-
+sum BTD,d
 
 ---------- DDBTD法：TACC=（净利润-经营活动现金净流量）/总资产
 lookfor "净利润"
 gen TACC=(B002000000-D610000_33)/A100000_33 
   //(净利润-经营活动产生的现金流量净额)/总资产
 order TACC
+sum TACC,d
 
 reg BTD TACC 
 predict resid, residuals 
