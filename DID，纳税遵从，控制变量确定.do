@@ -1,5 +1,7 @@
 * -------------------------------------------------------------------
-** 回归指标构建
+** 回归指标构建：被解释变量ETR,RATE_diff,LRATE_diff,BTD,DDBTD1
+	       解释变量DID
+	       控制变量ROE MB LEV REC INV FIXED size ADM Bdsize big4 First10 SOE
 ** 唐棠
 ** 时间：2024.1.21
 
@@ -74,7 +76,7 @@ gen ETR=B140101_33/B140204_33
   //实际所得税/税前总利润
 sum ETR,d  
 
----------- 实际所得税率变体1:名义所得税率-实际所得税率(RATE＿diff)
+---------- 实际所得税率变体1:名义所得税率-实际所得税率(RATE_diff)
 gen RATE_diff = F032801B-ETR
   //所得税率-ETR
 sum RATE_diff,d
