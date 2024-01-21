@@ -67,8 +67,6 @@ tab post
 tab treat
 tab DID
 
-save "$root/merge1.dta"
-
 *--------------  构建纳税遵从指标（5个）   ---------------------------------------
 ***************** 法1:实际所得税率（ETR）及其变体 ****************************
 ---------- 实际所得税率（ETR）=企业税收支出/税前收入
@@ -161,7 +159,9 @@ rename Ownership_101 SOE
 order ROE MB LEV REC INV FIXED size ADM Bdsize big4 First10 SOE
 order ETR RATE_diff LRATE_diff BTD DDBTD DID
 
-
+*----------------输出一个统计性表格 excel-------------------------
+export
+save"$root/temp/merge1.dta"
 
 
 
