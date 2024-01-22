@@ -1,5 +1,5 @@
 * -------------------------------------------------------------------
-** 回归指标构建：被解释变量ETR,RATE_diff,LRATE_diff,BTD,DDBTD1
+** 回归指标构建：被解释变量lnETR,lnRATE_diff,lnLRATE_diff,lnBTD,lnDDBTD
 	       解释变量DID
 	       控制变量ROE MB LEV REC INV FIXED size ADM Bdsize big4 First10 SOE
 ** 唐棠
@@ -115,6 +115,13 @@ gen resid_diff = resid - mu_resid
 gen DDBTD = mu_resid+resid_diff
 sum DDBTD,d
 
+******对纳税遵从指标取对数
+gen lnETR=ln(ETR)
+gen lnRATE_diff=ln(RATE_diff)
+gen lnLRATE_diff=ln(LRATE_diff)
+gen lnBTD=ln(BTD)
+gen lnDDBTD=ln(DDBTD)
+
 
 *--------------  构建/寻找控制变量   ---------------------------------------
 //净资产收益率（ROE），账面市价比（MB），资产负债率（LEV），应收账款占比（REC），存货占比（INV），
@@ -157,7 +164,7 @@ lookfor "公司性质"
 rename Ownership_101 SOE
 
 order ROE MB LEV REC INV FIXED size ADM Bdsize big4 First10 SOE
-order ETR RATE_diff LRATE_diff BTD DDBTD DID
+order lnETR lnRATE_diff lnLRATE_diff lnBTD lnDDBTD
 
 *----------------输出一个统计性表格 excel-------------------------
 export
