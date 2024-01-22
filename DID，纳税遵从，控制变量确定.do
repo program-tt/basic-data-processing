@@ -23,27 +23,27 @@ destring disctetion_year, replace
 
 gen length = strlen(city)
 gsort length
-replace city_county = udsubstr(city_county, 4, .) in 32/2301
-replace city_county = udsubstr(city_county, 5, .) in 2302/2505
-replace city_county = udsubstr(city_county, 6, .) in 2506/2598
-replace city_county = udsubstr(city_county, 8, .) in 2599/2706
-replace city_county = udsubstr(city_county, 9, .) in 2707/2729
-replace city_county = udsubstr(city_county, 10, .) in 2730/2766
-replace city_county = udsubstr(city_county, 11, .) in 2767/2835
-replace city_county = udsubstr(city_county, 12, .) in 2836/2847
+replace county_reg = udsubstr(county_reg, 4, .) in 32/2301
+replace county_reg = udsubstr(county_reg, 5, .) in 2302/2505
+replace county_reg = udsubstr(county_reg, 6, .) in 2506/2598
+replace county_reg = udsubstr(county_reg, 8, .) in 2599/2706
+replace county_reg = udsubstr(county_reg, 9, .) in 2707/2729
+replace county_reg = udsubstr(county_reg, 10, .) in 2730/2766
+replace county_reg = udsubstr(county_reg, 11, .) in 2767/2835
+replace county_reg = udsubstr(county_reg, 12, .) in 2836/2847
 drop length
 	//删除区县中含有市的部分
 
-replace strvar = regexr(strvar, "\([^)]*\)", "")
+replace county_reg = regexr(county_reg, "\([^)]*\)", "")
 	//删除区县中带有括号的部分
 
-replace city_county = "中山市" in 108
-replace city_county = "儋州市" in 885
-replace city_county = "东莞市" in 1268
-replace city_county = "嘉峪关市" in 2424
+replace county_reg = "中山市" in 108
+replace county_reg = "儋州市" in 885
+replace county_reg = "东莞市" in 1268
+replace county_reg = "嘉峪关市" in 2424
 	//填补区县缺失值
 
-duplicates report city county_reg
+duplicates report city_reg county_reg
 	//检查是否有重复
 
 	
@@ -115,7 +115,7 @@ gen resid_diff = resid - mu_resid
 gen DDBTD = mu_resid+resid_diff
 sum DDBTD,d
 
-******对纳税遵从指标取对数
+******对纳税遵从指标取对数******
 gen lnETR=ln(ETR)
 gen lnRATE_diff=ln(RATE_diff)
 gen lnLRATE_diff=ln(LRATE_diff)
