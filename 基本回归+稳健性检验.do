@@ -1,6 +1,23 @@
-***描述性统计
+* -------------------------------------------------------------------
+** 基本回归：lnBTD,lnDDBTD
+   稳健性检验
+** 唐棠
+** 时间：2024.1.24
+
+**存在问题：
+1.培根分解部分stata显示没有ddtiming的命令（这一部分是必须的吗）
+2.排除金税三期影响的稳健性分析那里还需要构建金税三期的DID，但是我们的数据里好像没包含这部分我就直接删掉了
+
+*----------------文件基本设置--------------------------------------
+global root "/Users/apple/Desktop/税收处罚与企业流动"
+
+*--------------  对裁量权数据进行基本处理构建   ---------------------------------------
+use "$root/merge1.dta"
+
+*******************描述性统计******************************************************
 logout,save(描述性统计) word replace:sum lnETR lnRATE_diff lnLRATE_diff lnBTD lnDDBTD DID ROE MB LEV REC INV FIXED size ADM Bdsize big4 First10 SOE
 asdoc sum lnETR lnRATE_diff lnLRATE_diff lnBTD lnDDBTD DID ROE MB LEV REC INV FIXED size ADM Bdsize big4 First10 SOE, dec(6), save(表1描述性统计.doc) 
+
 
 ***基准回归：税收征管规范化与企业投资效率************************
 global xlist ROE MB LEV REC INV FIXED size ADM Bdsize big4 First10 SOE
@@ -16,7 +33,7 @@ estadd local 时间固定效应 "No"
 estadd local 行业固定效应 "No"  
 est store m2
 
-***加固定效应
+***加固定效应************************************************
 xtreg lnBTD DID  i.year i.Sic2 ,fe vce(cluster province)
 estadd local 个体固定效应 "Yes" 
 estadd local 时间固定效应 "Yes" 
@@ -28,7 +45,7 @@ estadd local 时间固定效应 "Yes"
 estadd local 行业固定效应 "Yes" 
 est store m4
 
-***加控制变量
+***加控制变量************************************************
 xtreg lnBTD DID $xlist i.year i.Sic2 ,fe vce(cluster province)
 estadd local 个体固定效应 "Yes" 
 estadd local 时间固定效应 "Yes" 
@@ -45,7 +62,7 @@ esttab m1 m2 m3 m4 m5 m6 using 基准回归分析.rtf, ar2 scalar( N 个体固�
 
 
 
-***平行趋势检验
+*************   平行趋势检验    *******************************************
 gen G=0
 replace G=1 if disctetion_year <2050
 gen event = year - disctetion_year if G==1
@@ -67,18 +84,15 @@ gen las_`i'=(event==`i'&G==1)
 
 xtreg lnBTD pre_4 pre_3 pre_2  current las_1 las_2 las_3 $xlist i.year i.Sic2 ,fe vce(cluster province)
 xtreg lnDDBTD pre_4 pre_3 pre_2  current las_1 las_2 las_3 $xlist i.year i.Sic2 ,fe vce(cluster province)
-
-coefplot, baselevels keep( pre_* current las_*) omitted vertical recast(connect) yline(0) ytitle("政策动态效应") xtitle("政策实施的相对时间") xlabel(1 "-4" 2"-3" 3"-2" 4"0" 5"1" 6"2" 7"3" )ciopts(recast(rcap)) scheme(s1mono) levels(95) 
-
+coefplot, baselevels keep( pre_* current las_*) omitted vertical recast(connect) yline(0) ytitle("政策动态效应")  ///
+xtitle("政策实施的相对时间") xlabel(1 "-4" 2"-3" 3"-2" 4"0" 5"1" 6"2" 7"3" )ciopts(recast(rcap)) scheme(s1mono) levels(95) 
 graph export "平行趋势检验.png",as(png) replace width(800) height(600)
  
  
- 
- 
- 
- ***稳健性检验 
 
-***异质性DID 
+**********************     稳健性检验   ****************************************************
+
+***  异质性DID *********************
 ***无协变量的培根分解
 ddtiming lnBTD DID ,i( id ) t(year)
 ddtiming lnDDBTD DID ,i( id ) t(year)
