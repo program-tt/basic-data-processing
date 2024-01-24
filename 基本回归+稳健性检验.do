@@ -1,9 +1,13 @@
 * -------------------------------------------------------------------
-** 基本回归：lnBTD,lnDDBTD
+** 基本回归：lnDDBTD
    稳健性检验
 ** 唐棠
 ** 时间：2024.1.24
 ** 一稿修改时间：2024.1.25
+** 修改内容：
+1.根据显著性，被解释变量仅保留lnDDBTD
+2.平行趋势检验那里仍有疑问，正在修改中：加了一版修改原稿、缩尾、增加政策后时间的代码，但好像效果还是不太好
+3.稳健性检验部分删除不显著的方法，对显著的方法进行简单补充修改
 
 *----------------文件基本设置--------------------------------------
 global root "/Users/apple/Desktop/税收处罚与企业流动"
@@ -65,10 +69,7 @@ xtreg lnDDBTD pre_4 pre_3 pre_2  current las_1 las_2 las_3 $xlist i.year i.Sic2 
 coefplot, baselevels keep( pre_* current las_*) omitted vertical recast(connect) yline(0) ytitle("政策动态效应")  ///
 xtitle("政策实施的相对时间") xlabel(1 "-4" 2"-3" 3"-2" 4"0" 5"1" 6"2" 7"3" )ciopts(recast(rcap)) scheme(s1mono) levels(95) 
 graph export "平行趋势检验.png",as(png) replace width(800) height(600)
- 
- 
-
- 
+--------------------------------
 winsor2 DDBTD, cut(5 95)
 gen lnDDBTD1=ln(DDBTD)
  
@@ -96,10 +97,9 @@ graph export "平行趋势检验.png",as(png) replace width(800) height(600)
  
  
  
- 
 **********************     稳健性检验   ****************************************************
 
-***  异质性DID *********************
+*** 异质性DID *********************
 ***无协变量的培根分解
 ddtiming lnDDBTD DID ,i( id ) t(year)
 ***计算稳健估计量
@@ -133,7 +133,7 @@ estadd local 时间固定效应 "Yes"
 estadd local 行业固定效应 "Yes" 
 est store a2
 
-*排除干扰性因素营改增的影响 
+***排除干扰性因素营改增的影响 
 gen ind2 = substr(Sicda_str, length(Sicda_str)-1, 2)
 destring ind2,replace
 order ind2
